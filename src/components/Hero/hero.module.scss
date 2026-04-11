@@ -1,0 +1,213 @@
+@use '../../scss/abstracts/' as a;
+
+.hero {
+  position: relative;
+
+  padding: 50px 0 100px 0;
+
+  background: url('../../assets/bg/hero-phone.png') no-repeat center/cover;
+
+  @include a.tablet {
+    background: url('../../assets/bg/hero-tablet.png') no-repeat center/cover;
+
+    padding: 40px 0;
+  }
+
+  @include a.desktop {
+    background: url('../../assets/bg/hero-desktop.png') no-repeat center/cover;
+    padding: 100px 0;
+  }
+
+  .heroOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0000007a;
+
+    z-index: 1;
+  }
+
+  .heroContentTop {}
+
+  .heroContentTop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: a.$color-accent2;
+    font-family: a.$font-main;
+    gap: 35px;
+
+    position: relative;
+    z-index: 2;
+
+    @include a.tablet {
+      gap: 40px;
+    }
+
+    @include a.desktop {
+      gap: 80px;
+    }
+  }
+
+  .heroTitle {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 17px;
+
+
+    @include a.tablet {
+      font-size: 20px;
+      line-height: 24px;
+    }
+
+    @include a.desktop {
+      font-size: 40px;
+      line-height: 49px;
+    }
+  }
+
+  .heroDescriptionWrapper {
+    display: flex;
+    justify-content: center;
+
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 24px;
+    row-gap: 20px;
+    justify-content: center;
+    margin: 0 auto;
+
+
+    @include a.tablet {
+      display: flex;
+      align-items: center;
+      gap: 35px;
+    }
+
+    @include a.desktop {
+      gap: 53.5px;
+    }
+  }
+
+  .heroInfoTxt {
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 12px;
+    max-width: 136px;
+
+
+    text-align: left;
+    grid-column: 2;
+    grid-row: 1;
+
+    @include a.tablet {
+      text-align: end;
+      max-width: 172px;
+      font-size: 14px;
+      line-height: 17px;
+    }
+
+    @include a.desktop {
+      max-width: 345px;
+      font-size: 24px;
+      line-height: 29px;
+    }
+  }
+
+  .heroVerticalLine {
+    width: 2px;
+    background-color: a.$color-bg-main;
+
+
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    height: auto;
+
+    @include a.tablet {
+      height: 110px;
+    }
+
+    @include a.desktop {
+      height: 144px;
+    }
+  }
+
+  .heroSearchBar {}
+
+  .heroSearchForm {
+    display: flex;
+  }
+
+  .hearoSearchInput {
+    color: a.$color-bg-inputs2;
+
+    font-family: a.$font-main;
+    font-size: 6px;
+    font-weight: 500;
+    line-height: 7px;
+
+
+    border-radius: 5px;
+    background: a.$color-bg-inputs2;
+    width: 174px;
+    padding: 4px 0 10px 4px;
+  }
+
+  .heroSearchButton {}
+
+  .heroSearchBtn {}
+}
+
+.dateContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+
+  @include a.tablet {}
+
+  @include a.desktop {}
+
+  .dateMonthYear {
+    font-style: Medium;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 12px;
+
+
+    @include a.tablet {
+      font-size: 14px;
+      line-height: 17px;
+    }
+
+    @include a.desktop {
+      font-size: 24px;
+      line-height: 29px;
+    }
+  }
+
+  .dateWeekdayDay {
+    font-style: Medium;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 12px;
+
+
+    @include a.tablet {
+      font-size: 14px;
+      line-height: 17px;
+    }
+
+    @include a.desktop {
+      font-size: 24px;
+      line-height: 29px;
+    }
+
+    sup {
+      font-size: 0.6em;
+      vertical-align: top;
+    }
+  }
+}

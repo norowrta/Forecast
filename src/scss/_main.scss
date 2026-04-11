@@ -1,0 +1,83 @@
+@use './abstracts/' as a;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: a.$font-main;
+
+  font-optical-sizing: auto;
+
+  font-weight: 400;
+  font-style: normal;
+
+  background-color: a.$color-bg-main;
+
+
+
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+}
+
+input {
+  border: none;
+  outline: none;
+}
+
+.container {
+  width: 100%;
+  padding: 0 15px;
+  margin: 0 auto;
+
+  @include a.tablet {
+    max-width: 768px;
+    padding: 0 30px;
+  }
+
+  @include a.desktop {
+    max-width: 1200px;
+
+  }
+}
+
+
+@supports not selector(::-webkit-scrollbar) {
+  html {
+    scrollbar-color: a.$color-accent a.$color-bg-main;
+    scrollbar-width: thin;
+  }
+}
+
+::-webkit-scrollbar-track {
+  background: a.$color-bg-main;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: a.$color-accent;
+  border-radius: 10px;
+  border: 2px solid a.$color-bg-main;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #dcb15b;
+}

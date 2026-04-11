@@ -1,0 +1,177 @@
+@use '../../scss/abstracts/' as a;
+@use 'sass:color';
+
+.headerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+
+  background: a.$color-bg-main;
+  padding: 15px 0;
+
+  @include a.tablet {}
+
+  @include a.desktop {
+    padding: 12px 0;
+  }
+}
+
+.headerContentMain {
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  @include a.tablet {
+    justify-content: stretch;
+    gap: 57px;
+  }
+
+  @include a.desktop {
+    gap: 111px;
+  }
+}
+
+.logoLink {
+
+
+
+  @include a.tablet {}
+
+  @include a.desktop {}
+
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.logo {
+
+  width: 34px;
+  height: 22px;
+
+  @include a.tablet {
+    width: 54px;
+    height: 36px;
+  }
+
+  @include a.desktop {
+    width: 82px;
+    height: 56px;
+  }
+}
+
+.headerNav {
+
+  display: none;
+
+  @include a.tablet {
+    display: flex;
+    gap: 45px;
+  }
+
+  @include a.desktop {}
+}
+
+.headerNavLink {
+
+
+
+  @include a.tablet {
+    color: a.$color-txt-main;
+
+    font-family: a.$font-subMain;
+    font-style: Medium;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 12px;
+    letter-spacing: 0%;
+  }
+
+  @include a.desktop {
+    font-size: 12px;
+
+    line-height: 15px;
+  }
+
+  transition: color 0.3s ease-in-out;
+
+  &:hover {
+    color: color.adjust(a.$color-txt-main, $lightness: 30%);
+  }
+}
+
+.userActions {
+  text-wrap: nowrap;
+  display: none;
+
+  @include a.tablet {
+    display: block;
+  }
+
+  @include a.desktop {}
+}
+
+.userName {
+
+  color: a.$color-txt-main;
+
+  font-family: a.$font-subMain;
+  font-style: Medium;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 12px;
+  letter-spacing: 0%;
+
+  @include a.tablet {}
+
+  @include a.desktop {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
+
+.authButton {
+
+
+
+  @include a.tablet {
+    color: a.$color-txt-main;
+
+    font-family: a.$font-subMain;
+    font-style: Medium;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 12px;
+    letter-spacing: 0%;
+
+
+    padding: 8px 16px;
+    background: a.$color-accent;
+    border-radius: 10px;
+
+    cursor: pointer;
+    white-space: nowrap;
+
+  }
+
+  @include a.desktop {
+
+
+    font-size: 12px;
+
+    line-height: 15px;
+    padding: 10px 20px;
+
+  }
+
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background: color.adjust(a.$color-accent, $lightness: -10%);
+  }
+}
