@@ -12,7 +12,7 @@ import HourlyForecast from "./HourlyForecast/HourlyForecast";
 export default function Dashboard() {
   const [weatherData, setWeatherData] = useState(null);
   const [forecastData, setForecastData] = useState(null);
-  const { selectedCity, lastUpdate } = useCities();
+  const { selectedCity, lastUpdate, isDashboardOpen } = useCities();
   const { currentUser } = useAuth();
 
   useEffect(() => {
@@ -55,7 +55,7 @@ export default function Dashboard() {
     fetchWeather();
   }, [selectedCity, lastUpdate]);
 
-  if (!currentUser) return;
+  if (!currentUser || !selectedCity || !isDashboardOpen) return null;
 
   return (
     <section id="dashboard" className={scss.dashboard} data-aos="fade-up">

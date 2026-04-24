@@ -98,7 +98,8 @@ export default function PhotoGallery() {
     setFullscreenImage(null);
   };
 
-  if (!cities.length) return null;
+  // if (!selectedCity) return;
+  if (!cities.length) return;
 
   return (
     <div className={scss.photoGallery} id="PhotoGallery">

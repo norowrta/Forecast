@@ -30,7 +30,7 @@ export default function WeatherCard({ cityName }) {
   const [weatherData, setWeatherData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const { removeCity } = useCities();
-  const { setSelectedCity, forceRefresh } = useCities();
+  const { selectedCity, setSelectedCity, forceRefresh, isDashboardOpen, setIsDashboardOpen } = useCities();
 
   const { currentUser } = useAuth();
 
@@ -110,6 +110,8 @@ export default function WeatherCard({ cityName }) {
 
   const iconCode = weatherData.weather[0].icon;
 
+  const isActiveAndOpen = selectedCity === cityName && isDashboardOpen;
+
   const handleSeeMore = () => {
     if (!currentUser) {
       toast.warn(`Log in to see more details!`, {
@@ -126,14 +128,19 @@ export default function WeatherCard({ cityName }) {
       return;
     }
 
-    setSelectedCity(cityName);
+    if (isActiveAndOpen) {
+      setIsDashboardOpen(false);
+    } else {
+      setSelectedCity(cityName);
+      setIsDashboardOpen(true);
 
-    setTimeout(() => {
-      const dashboardElement = document.getElementById("dashboard");
-      if (dashboardElement) {
-        dashboardElement.scrollIntoView({ behavior: "smooth" });
-      }
-    }, 100);
+      setTimeout(() => {
+        const dashboardElement = document.getElementById("dashboard");
+        if (dashboardElement) {
+          dashboardElement.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    }
   };
 
   return (
@@ -159,15 +166,13 @@ export default function WeatherCard({ cityName }) {
       </div>
       <div className={scss.footer}>
         <button className={scss.btnSeeMore} onClick={() => handleSeeMore()}>
-          See more
+          {isActiveAndOpen ? "See less" : "See more"}
         </button>
         <button
           className={scss.btnRefresh}
           onClick={(e) => {
             e.stopPropagation();
-            if (currentUser) {
-              setSelectedCity(cityName);
-            }
+            setSelectedCity(cityName);
             fetchWeather();
             forceRefresh();
           }}

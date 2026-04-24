@@ -9,7 +9,11 @@ export default function CitiesProvider({ children }) {
   });
 
   const [lastUpdate, setLastUpdate] = useState(Date.now());
-  const [selectedCity, setSelectedCity] = useState(null);
+  const [selectedCity, setSelectedCity] = useState(() => {
+    return cities.length > 0 ? cities[0] : null;
+  });
+
+  const [isDashboardOpen, setIsDashboardOpen] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("favoriteCities", JSON.stringify(cities));
@@ -47,6 +51,8 @@ export default function CitiesProvider({ children }) {
         setSelectedCity,
         lastUpdate,
         forceRefresh,
+        isDashboardOpen,
+        setIsDashboardOpen,
       }}
     >
       {children}
