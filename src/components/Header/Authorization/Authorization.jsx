@@ -1,10 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SignUp from "./SignUp";
 import LogIn from "./LogIn";
 import scss from "./authorization.module.scss";
 
-export default function Authorization({ isOpen, onClose, onLogin }) {
-  const [currentForm, setCurrentForm] = useState("signup");
+export default function Authorization({ isOpen, onClose }) {
+  const [currentForm, setCurrentForm] = useState("login");
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -16,19 +26,19 @@ export default function Authorization({ isOpen, onClose, onLogin }) {
 
   return (
     <div className={scss.authorization} onClick={handleOverlayClick}>
-      {currentForm === "signup" ? (
-        <SignUp
-          onClose={onClose}
-          onSwitchToLogin={() => setCurrentForm("login")}
-          onLogin={onLogin}
-        />
-      ) : (
-        <LogIn
-          onClose={onClose}
-          onSwitchToSignup={() => setCurrentForm("signup")}
-          onLogin={onLogin}
-        />
-      )}
+      <div className={scss.wrapper}>
+        {currentForm === "signup" ? (
+          <SignUp
+            onClose={onClose}
+            onSwitchToLogin={() => setCurrentForm("login")}
+          />
+        ) : (
+          <LogIn
+            onClose={onClose}
+            onSwitchToSignup={() => setCurrentForm("signup")}
+          />
+        )}
+      </div>
     </div>
   );
 }

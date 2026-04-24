@@ -1,0 +1,160 @@
+@use '../../../../../scss/abstracts/' as a;
+@use 'sass:color';
+
+.dayForecast {
+  width: 100%;
+
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  background-color: a.$bg-accent;
+  border: 1px solid rgba(65, 71, 84, 0.1);
+  border-radius: 8px;
+
+
+  .title {
+    color: a.$text-main;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+    letter-spacing: -0.6px;
+  }
+
+  .forecastList {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(53, 53, 52, 0.5);
+      transition: transform 0.3s ease-in-out;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:hover {
+        transform: scale(1.02);
+      }
+
+      .dayName {
+        width: 50px;
+        color: a.$text-main;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 24px;
+      }
+
+      .iconWrapper {
+        position: relative;
+        display: inline-flex;
+        cursor: help;
+
+        &::after {
+          content: attr(data-tooltip);
+          position: absolute;
+          bottom: 100%;
+          left: 50%;
+          transform: translateX(-50%);
+
+          background: rgba(24, 24, 27, 0.9);
+          backdrop-filter: blur(8px);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          color: #ffffff;
+          padding: 6px 12px;
+          border-radius: 6px;
+          font-size: 14px;
+          font-weight: 500;
+          white-space: nowrap;
+          text-transform: capitalize;
+
+          opacity: 0;
+          visibility: hidden;
+          margin-bottom: 4px;
+          z-index: 10;
+          transition: all 0.3s ease-in-out;
+        }
+
+        &::before {
+          content: '';
+          position: absolute;
+          bottom: 100%;
+          left: 50%;
+          transform: translateX(-50%);
+          border: 6px solid transparent;
+          border-top-color: rgba(24, 24, 27, 0.9);
+
+          opacity: 0;
+          visibility: hidden;
+          margin-bottom: -8px;
+          z-index: 10;
+
+          transition: all 0.3s ease-in-out;
+        }
+
+        &:hover {
+          &::after {
+            opacity: 1;
+            visibility: visible;
+            margin-bottom: 14px;
+          }
+
+          &::before {
+            opacity: 1;
+            visibility: visible;
+            margin-bottom: 2px;
+          }
+        }
+
+        .cardIcons {
+          width: 22px;
+          height: 22px;
+          color: #C6C6C7;
+        }
+      }
+
+      .temp {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+
+        .tempValueMin {
+          width: 24px;
+          color: a.$text-light;
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 24px;
+        }
+
+        .barTrack {
+          width: 50px;
+          height: 5px;
+          background-color: #353534;
+          border-radius: 12px;
+          position: relative;
+
+          .barFill {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, #78b8e6, #f3d45c);
+          }
+        }
+
+        .tempValueMax {
+          width: 24px;
+          color: a.$text-main;
+          font-size: 16px;
+          font-weight: 700;
+          line-height: 24px;
+        }
+      }
+    }
+  }
+}

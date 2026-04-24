@@ -1,0 +1,167 @@
+@use "../../../scss/abstracts/" as a;
+
+.newsFeed {
+
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include a.tablet {
+    gap: 56px;
+  }
+
+  .title {
+    color: a.$text-main;
+
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.6px;
+    text-align: start;
+  }
+
+  .mainContent {
+
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    .newsCard {
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: transform 0.3s ease;
+
+      @include a.tablet {
+        flex-direction: row;
+        gap: 76px;
+      }
+
+      &:hover {
+        transform: translateX(20px);
+
+        .newsInfo .newsTitle {
+          color: a.$text-accent;
+        }
+      }
+
+      .newsDate {
+        color: a.$text-accent;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+
+        white-space: nowrap;
+
+        @include a.tablet {
+          margin-top: 4px;
+        }
+      }
+
+      .newsInfo {
+        display: flex;
+        flex-direction: column;
+
+        .newsSource {
+          color: a.$text-links;
+          font-size: 12px;
+          font-weight: 700;
+          letter-spacing: 0.6px;
+          text-transform: uppercase;
+          line-height: 18px;
+        }
+
+        .newsTitle {
+          color: a.$text-white;
+          font-size: 18px;
+          font-weight: 700;
+          transition: color 0.3s ease;
+
+          margin: 4px 0 12px 0;
+
+          @include a.tablet {
+            font-size: 24px;
+          }
+        }
+
+        .newsDescr {
+          color: a.$text-light;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 20px;
+
+          @include a.tablet {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+
+  .emptyState {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 48px 24px;
+    text-align: center;
+
+    border: 1px dashed rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.02);
+
+    .emptyText {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 6px;
+
+      color: a.$text-light;
+      font-size: 16px;
+      font-weight: 500;
+
+      .selectedCity {
+        color: a.$text-white;
+        font-weight: 700;
+      }
+    }
+
+    .emptySubtext {
+      color: a.$text-links;
+      font-size: 14px;
+      font-weight: 400;
+    }
+  }
+
+  .showMoreBtn {
+    cursor: pointer;
+    align-self: center;
+    color: a.$text-light;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s ease;
+
+    justify-content: center;
+
+    &:hover {
+      color: a.$text-white;
+    }
+
+    .icon {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.3s ease;
+    }
+  }
+}

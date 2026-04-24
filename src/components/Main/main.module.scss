@@ -1,1 +1,11 @@
-@use '../../scss/abstracts/' as a;
+@use "../../scss/abstracts/" as a;
+
+.main {
+  flex-grow: 1;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 96px;
+}

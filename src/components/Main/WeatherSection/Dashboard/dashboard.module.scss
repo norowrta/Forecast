@@ -1,0 +1,12 @@
+@use '../../../../scss/abstracts/' as a;
+@use 'sass:color';
+
+.dashboard {
+  .mainContent {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    margin: 0 auto;
+  }
+}

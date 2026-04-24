@@ -1,267 +1,188 @@
-@use '../../../scss/abstracts/' as a;
-@use 'sass:color';
+@use "../../../scss/abstracts/" as a;
+@use "sass:color";
 
 .authorization {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 100;
   width: 100vw;
   height: 100vh;
   background-color: #00000099;
-  z-index: 100;
 }
 
-.signUp {
-
+.wrapper {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 
-  background: a.$color-bg-main;
+  border: 1px solid rgba(65, 71, 84, 0.15);
+  border-radius: 8px;
+  box-shadow: 0px 40px 60px 0px rgba(32, 51, 59, 0.08);
+  background: a.$bg-cards;
 
-  padding: 25px;
-  border-radius: 25px;
-
-  @include a.tablet {
-
-    padding: 30px 45px 22px 45px;
-  }
-
-  @include a.desktop {
-
-
-    padding: 28px 80px 27px 80px;
-  }
-}
-
-.signUpContent {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
-
-  height: 100%;
-
-}
-
-.signUpTop {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 30px;
+  width: calc(100% - 32px);
+  max-width: 446px;
+  padding: 32px 24px;
 
   @include a.tablet {
-    gap: 17px;
+    width: 446px;
+    padding: 40px;
   }
 
-  @include a.desktop {
-    gap: 40px;
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
   }
-}
 
-.signUpTitle {
-  color: a.$color-txt-main;
-
-  font-family: a.$font-subMain;
-  font-style: Medium;
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 24px;
-  letter-spacing: 0%;
-
-
-  @include a.tablet {}
-
-  @include a.desktop {
-    font-size: 28px;
-
-    line-height: 34px;
-
+  .formWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   }
-}
 
-.signUpFormWrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-
-  @include a.tablet {}
-
-  @include a.desktop {
-    gap: 30px;
+  .titleWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
   }
-}
 
-.signUpForm {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+  .title {
+    color: a.$text-main;
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.75px;
 
-  @include a.tablet {}
+    margin-bottom: 12px;
 
-  @include a.desktop {}
-}
+    @include a.tablet {
+      font-size: 30px;
+    }
+  }
 
-.signUpLabel {
-  color: a.$color-txt-main;
-
-  font-family: a.$font-main;
-  font-style: Medium;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 15px;
-  letter-spacing: 0%;
-
-
-  @include a.tablet {}
-
-  @include a.desktop {
+  .subtitle {
+    color: a.$text-light;
     font-size: 14px;
-
-    line-height: 17px;
-  }
-}
-
-.signUpInput {
-
-  border-radius: 10px;
-  background: a.$color-bg-inputs;
-  width: 243px;
-  padding: 12px 20px;
-
-  color: a.$color-txt-main;
-
-  font-family: a.$font-main;
-  font-style: Medium;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 15px;
-  letter-spacing: 0%;
-  text-align: left;
-
-  &::placeholder {
-    color: #ABABAB;
+    font-weight: 400;
   }
 
-  @include a.tablet {
-    width: 310px;
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
   }
 
-  @include a.desktop {
-    padding: 16px 20px;
-    width: 440px;
-
-    font-size: 14px;
-    line-height: 17px;
-  }
-}
-
-.signUpErrorText {
-  color: #ff3232;
-
-  font-family: a.$font-main;
-  font-style: Medium;
-  font-size: 10px;
-  font-weight: 500;
-  line-height: 13px;
-  letter-spacing: 0%;
-
-  margin-left: 4px;
-
-
-  @include a.tablet {}
-
-  @include a.desktop {
+  .label {
+    color: a.$text-light;
     font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
 
-    line-height: 15px;
+    margin-left: 4px;
   }
 
+  .input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px 16px;
 
-}
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background: #0e0e0e80;
 
-.signUpFieldWrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
+    font-family: a.$font-main;
+    color: a.$text-main;
+    font-size: 16px;
+    font-weight: 400;
 
-  @include a.tablet {}
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 
-  @include a.desktop {
+    &::placeholder {
+      color: #c1c6d766;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: rgba(161, 161, 170, 0.5);
+      box-shadow: 0 0 0 3px rgba(161, 161, 170, 0.15);
+    }
+  }
+
+  .errorText {
+    margin-left: 4px;
+    margin-top: 10px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #ffb4ab;
+  }
+
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 8px;
+
+    padding: 12px 0;
+    width: 100%;
+
+    border-radius: 4px;
+    box-shadow: 0px 0px 20px 0px rgba(198, 198, 199, 0.1);
+    background: a.$bg-accent2;
+
+    color: #2f3131;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+
+    margin-top: 24px;
+
+    cursor: pointer;
+    transition: filter 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+
+    @include a.tablet {
+      margin-top: 36px;
+    }
+
+    &:hover {
+      filter: brightness(1.15);
+      transform: translateY(-2px);
+      box-shadow: 0px 6px 20px 0px rgba(198, 198, 199, 0.25);
+    }
+
+    &:active {
+      transform: translateY(0);
+      filter: brightness(0.95);
+      box-shadow: 0px 0px 10px 0px rgba(198, 198, 199, 0.1);
+    }
+
+    .loginIcon {
+      width: 20px;
+      height: 20px;
+    }
   }
-}
 
-.signUpBtn {
+  .logInLink {
 
-  border-radius: 10px;
-  background: a.$color-accent;
-  padding: 10px 30px;
+    display: flex;
+    gap: 4px;
 
-  color: a.$color-txt-main;
-
-  font-family: a.$font-main;
-  font-style: Regular;
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 15px;
-  letter-spacing: 0%;
-  text-align: left;
-  cursor: pointer;
-
-  transition: all 0.3s ease-in-out;
-
-
-  &:hover {
-    background: color.adjust(a.$color-accent, $lightness: -10%);
-  }
-
-  @include a.tablet {}
-
-  @include a.desktop {
+    color: a.$text-light;
     font-size: 14px;
-    line-height: 17px;
-  }
-}
+    font-weight: 400;
 
-.logInLink {
+    .logInAccent {
+      color: a.$text-main;
+      font-size: 14px;
+      font-weight: 600;
 
-  color: a.$color-txt-main;
-
-  font-family: a.$font-main;
-  font-style: Medium;
-  font-size: 8px;
-  font-weight: 500;
-  line-height: 10px;
-  letter-spacing: 0%;
-  text-align: left;
-
-  @include a.tablet {}
-
-  @include a.desktop {
-    font-size: 10px;
-    line-height: 12px;
-  }
-}
-
-.logInAccent {
-  text-decoration: underline;
-}
-
-.signUpFormContent {
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 30px;
-
-
-  @include a.tablet {
-    gap: 25px;
-  }
-
-  @include a.desktop {
-    gap: 35px;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 }

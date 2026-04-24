@@ -1,102 +1,105 @@
-@use '../../../scss/abstracts/' as a;
-@use 'sass:color';
-
+@use "../../../scss/abstracts/" as a;
+@use "sass:color";
 
 .dropdown {
   @include a.tablet {
     display: none;
   }
-}
 
-.dropdownBtn {
-  color: a.$color-txt-main;
-  font-family: a.$font-subMain;
-  font-size: 10px;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-}
+  .btn {}
 
-.arrow {
-  width: 6px;
-  height: 6px;
-  transition: transform 0.3s ease-in-out;
-}
+  .item {
+    position: absolute;
+    top: 76px;
+    left: 0;
+    z-index: 10;
 
-.dropdownItem {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
 
-  position: absolute;
-  top: 50px;
-  left: 0;
-  width: 100%;
+    width: 100%;
+    padding: 0px 25px;
 
-  z-index: 10;
+    overflow: hidden;
 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 0px 0px 4px 4px;
+    box-shadow: 0px 20px 50px -20px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(40px);
+    background: a.$bg-header;
 
-  background: a.$color-bg-main;
-  box-shadow: inset 0px 20px 20px -20px rgba(0, 0, 0, 0.25);
-  padding: 30px 50px;
-  box-sizing: border-box;
+    clip-path: inset(0 0 100% 0);
+    visibility: hidden;
+    transition: clip-path 0.3s ease-in-out, padding 0.4s ease-in-out, visibility 0.3s;
 
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+    &.open {
+      padding: 25px;
+      clip-path: inset(0 0 0 0);
+      visibility: visible;
+    }
 
+    .nav {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
 
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: max-height 0.4s ease-in-out, opacity 0.3s ease-in-out;
+    .navLink {
+      color: a.$text-links;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: -0.35px;
 
+      display: flex;
+      align-items: center;
+      gap: 16px;
 
-  &.open {
-    max-height: 146px;
-    opacity: 1;
-  }
-}
+      &:hover {
+        color: color.adjust(a.$text-links, $lightness: 30%);
+      }
 
-.dropdownNav {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-}
+      .linkIcon {
+        max-width: 20px;
+        max-height: 20px;
+      }
+    }
 
-.dropdownNavLink {
-  color: a.$color-txt-main;
-  font-family: a.$font-subMain;
-  font-size: 10px;
-  font-weight: 500;
-  text-decoration: none;
+    .profile {
+      display: flex;
+      justify-content: center;
 
-  &:hover {
-    color: color.adjust(a.$color-txt-main, $lightness: 30%);
-  }
-}
+      .signUpBtn {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
 
-.dropdownProfile {}
+        margin: 0 8px;
 
-.dropdownСurrentUser {
-  color: a.$color-txt-main;
-  font-family: a.$font-subMain;
-  font-size: 10px;
-  font-weight: 500;
-}
+        border-radius: 6px;
+        background-color: a.$bg-accent2;
+        padding: 12px 0;
+        cursor: pointer;
 
-.dropdownSign {
-  padding: 8px 16px;
-  background: a.$color-accent;
-  border-radius: 10px;
-  border: none;
-  cursor: pointer;
-  color: a.$color-txt-main;
-  font-family: a.$font-subMain;
-  font-size: 12px;
+        color: a.$bg-header;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: -0.35px;
 
-  &:hover {
-    background: color.adjust(a.$color-accent, $lightness: -10%);
+        transition: box-shadow 0.2s ease, filter 0.2s ease;
+
+        &:hover {
+          box-shadow: 0 4px 16px rgba(244, 244, 245, 0.2);
+          filter: brightness(1.1);
+        }
+
+        .logIcon {
+          width: 12px;
+          height: 12px;
+        }
+      }
+    }
   }
 }

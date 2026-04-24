@@ -1,0 +1,87 @@
+@use '../../scss//abstracts/' as a;
+@use 'sass:color';
+
+.footer {
+  padding: 32px 0;
+  background-color: a.$bg-footer;
+
+  .content {
+
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    align-items: start;
+
+    @include a.tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0;
+    }
+
+    .brandInfo {
+      width: 100%;
+      align-items: center;
+
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+
+      @include a.tablet {
+        width: auto;
+        align-items: stretch;
+      }
+
+      .logo {
+        color: a.$text-footer;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 24px;
+      }
+
+      .copyright {
+        color: a.$text-links;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 16px;
+
+        transition: 0.2s color ease-in-out;
+
+        &:hover {
+          color: color.adjust(a.$text-links, $lightness: 10%);
+        }
+      }
+    }
+
+    .nav {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      gap: 24px;
+      margin-left: 20px;
+
+      @include a.tablet {
+        flex-direction: row;
+      }
+
+
+
+      .navLink {
+        color: a.$text-footerLinks;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 16px;
+
+        transition: 0.2s color ease-in-out;
+
+        &:hover {
+          color: color.adjust(a.$text-footerLinks, $lightness: 10%);
+        }
+      }
+    }
+  }
+
+
+
+
+}

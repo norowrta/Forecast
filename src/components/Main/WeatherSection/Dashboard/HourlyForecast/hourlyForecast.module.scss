@@ -1,0 +1,66 @@
+@use '../../../../../scss/abstracts/' as a;
+@use 'sass:color';
+
+.hourlyForecast {
+  background-color: a.$bg-accent;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+
+  @include a.tablet {
+    padding: 32px;
+    gap: 32px;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    left: 0;
+
+    .title {
+      color: a.$text-main;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 28px;
+      letter-spacing: -0.6px;
+
+      @include a.tablet {
+        font-size: 24px;
+        line-height: 32px;
+      }
+    }
+
+    .subtitle {
+      color: #a0a0a0;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+
+      @include a.tablet {
+        font-size: 16px;
+        line-height: 24px;
+      }
+    }
+  }
+
+  .chartContainer {
+    position: relative;
+    height: 220px;
+    width: 100%;
+    min-width: 560px;
+
+    @include a.tablet {
+      height: 280px;
+      min-width: 100%;
+    }
+  }
+}

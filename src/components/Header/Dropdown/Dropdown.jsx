@@ -1,10 +1,17 @@
 import scss from "./dropdown.module.scss";
 
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
+import {
+  Menu,
+  X,
+  MapPinSearch,
+  Rss,
+  Images,
+  LogIn,
+  LogOut,
+} from "lucide-react";
 
-import arrow from "../../../assets/icons/arrow.svg";
-
-export default function Dropdown({ currentUser, onOpenAuth }) {
+export default function Dropdown({ currentUser, onOpenAuth, onLogout }) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -25,51 +32,56 @@ export default function Dropdown({ currentUser, onOpenAuth }) {
 
   return (
     <div className={scss.dropdown} ref={dropdownRef}>
-      <button className={scss.dropdownBtn} onClick={toggleDropdown}>
-        Menu
-        {isOpen ? (
-          <img
-            src={arrow}
-            alt="arrow"
-            className={scss.arrow}
-            style={{ transform: "rotate(0)" }}
-          />
-        ) : (
-          <img
-            src={arrow}
-            alt="arrow"
-            className={scss.arrow}
-            style={{ transform: "rotate(90deg)" }}
-          />
-        )}
+      <button className={scss.btn} onClick={toggleDropdown}>
+        {isOpen ? <X color="#F4F4F5" /> : <Menu color="#F4F4F5" />}
       </button>
 
-      <div className={`${scss.dropdownItem} ${isOpen ? scss.open : ""}`}>
-        <nav className={scss.dropdownNav}>
-          <a href="#" className={scss.dropdownNavLink}>
-            Who we are
+      <div className={`${scss.item} ${isOpen ? scss.open : ""}`}>
+        <nav className={scss.nav}>
+          <a
+            href="#TrackedLocations"
+            className={scss.navLink}
+            onClick={() => setIsOpen(false)}
+          >
+            <MapPinSearch className={scss.linkIcon} /> Tracked Locations
           </a>
-          <a href="#" className={scss.dropdownNavLink}>
-            Contacts
+          <a
+            href="#NewsFeed"
+            className={scss.navLink}
+            onClick={() => setIsOpen(false)}
+          >
+            <Rss className={scss.linkIcon} /> News Feed
           </a>
-          <a href="#" className={scss.dropdownNavLink}>
-            Menu
+          <a
+            href="#PhotoGallery"
+            className={scss.navLink}
+            onClick={() => setIsOpen(false)}
+          >
+            <Images className={scss.linkIcon} /> Photo Gallery
           </a>
         </nav>
-        <div className={scss.dropdownProfile}>
+        <div className={scss.profile}>
           {currentUser ? (
-            <span className={scss.dropdownСurrentUser}>
-              Hello, {currentUser.username}
-            </span>
+            <>
+              <button
+                className={scss.signUpBtn}
+                onClick={() => {
+                  setIsOpen(false);
+                  if (onLogout) onLogout();
+                }}
+              >
+                Log Out <LogOut className={scss.logIcon} />
+              </button>
+            </>
           ) : (
             <button
-              className={scss.dropdownSign}
+              className={scss.signUpBtn}
               onClick={() => {
                 setIsOpen(false);
                 if (onOpenAuth) onOpenAuth();
               }}
             >
-              Sign up
+              Log In <LogIn className={scss.logIcon} />
             </button>
           )}
         </div>

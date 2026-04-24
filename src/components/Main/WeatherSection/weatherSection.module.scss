@@ -1,0 +1,78 @@
+@use '../../../scss/abstracts/' as a;
+
+.weatherSection {
+  display: flex;
+  flex-direction: column;
+  gap: 96px;
+}
+
+.weatherSectionTitle {
+  color: a.$text-main;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.locations {
+  display: flex;
+  flex-direction: column;
+}
+
+.swiperContainer {
+  padding-top: 32px !important;
+}
+
+.swiperSlide {
+  height: auto;
+  display: flex;
+  justify-content: center;
+
+  padding-left: 1px;
+  padding-right: 1px;
+}
+
+.carouselNavigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.navBtn {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
+  background: a.$bg-cards;
+  border: 1px solid a.$bg-cards;
+  border-radius: 12px;
+  color: a.$text-links;
+
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+
+  &:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    transform: translateY(-1px);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(1px) scale(0.95);
+  }
+}
+
+:global(.swiper-button-disabled) {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+:global(.swiper-button-next),
+:global(.swiper-button-prev) {
+  display: none !important;
+}

@@ -1,0 +1,113 @@
+@use '../../../../../scss/abstracts/' as a;
+@use 'sass:color';
+
+.conditions {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @include a.tablet {
+    gap: 32px;
+  }
+
+  .title {
+    color: a.$text-main;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: -0.6px;
+
+    @include a.tablet {
+      font-size: 24px;
+      line-height: 32px;
+    }
+  }
+
+  .mainContent {
+
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(2, 1fr);
+
+    @include a.tablet {
+      gap: 16px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .card {
+      padding: 16px;
+      background-color: a.$bg-cards;
+      border-radius: 8px;
+      border: 1px solid transparent;
+
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      @include a.tablet {
+        padding: 24px;
+        gap: 16px;
+      }
+
+      transition: border-color 0.3s ease,
+      transform 0.3s ease,
+      background-color 0.3s ease;
+
+      &:hover {
+        border-color: color-mix(in oklab, #fff 20%, transparent);
+        background-color: color-mix(in oklab, a.$bg-cards, #fff 5%);
+        transform: translateY(-4px);
+      }
+
+      &:hover .category {
+        color: a.$text-accent;
+      }
+
+
+      .category {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        color: a.$text-light2;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 16px;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+
+        transition: color 0.2s ease-in-out;
+
+        @include a.tablet {
+          gap: 12px;
+          font-size: 16px;
+          line-height: 24px;
+        }
+
+        .iconValue {
+          width: 16px;
+          height: 16px;
+
+          transition: color 0.2s ease-in-out;
+
+          @include a.tablet {
+            width: 18px;
+            height: 18px;
+          }
+        }
+      }
+
+      .value {
+        color: a.$text-main;
+        font-size: 22px;
+        font-weight: 700;
+        line-height: 28px;
+
+        @include a.tablet {
+          font-size: 30px;
+          line-height: 36px;
+        }
+      }
+    }
+  }
+}
