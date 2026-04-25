@@ -28,7 +28,7 @@ export default function WeatherSection() {
         <div className={scss.weatherCardsCarousel} data-aos="zoom-in">
           <Swiper
             slidesPerView={1}
-            spaceBetween={24}
+            spaceBetween={23}
             navigation={{
               prevEl: ".weather-prev",
               nextEl: ".weather-next",
@@ -50,7 +50,7 @@ export default function WeatherSection() {
               </SwiperSlide>
             ))}
           </Swiper>
-  
+
           <div className={scss.carouselNavigation}>
             <button className={`${scss.navBtn} weather-prev`}>
               <ChevronLeft size={20} />
@@ -59,7 +59,6 @@ export default function WeatherSection() {
               <ChevronRight size={20} />
             </button>
           </div>
-          
         </div>
       </div>
       <Dashboard />
